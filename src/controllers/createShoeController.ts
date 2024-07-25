@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { prismaClient } from '../database/prismaClient';
 
-export const createShoe = async (request: Request, response: Response) => {
-  const { model, brand, price, image_url } = request.body;
+export const createShoe = async (req: Request, res: Response) => {
+  const { model, brand, price, image_url } = req.body;
 
   try {
     const shoe = await prismaClient.shoes.create({
@@ -14,9 +14,9 @@ export const createShoe = async (request: Request, response: Response) => {
       }
     });
 
-    return response.json(shoe);
+    return res.status(201).json(shoe);
 
   } catch (error) {
-    response.status(500).json('message: Erro no servidor.')
-  }
+    res.status(500).json('message: Erro no servidor.');
+  };
 };
