@@ -20,10 +20,9 @@ export const updateShoe = async (req: Request, res: Response) => {
       }
     });
 
-    res.status(200).json(updatedShoe);
+    return res.status(200).json(updatedShoe);
 
   } catch (error: any) {
-    console.log(error)
-    res.status(500).json({ message: 'Erro ao atualizar item.' });
+    return res.status(500).json({ message: 'Erro ao atualizar item.' });
   };
 };
