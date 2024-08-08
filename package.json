@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon",
-    "dev": "tsx src/server.ts",
-    "dev:local": "tsx watch src/server.ts",
-    "build:": "tsup src",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --format cjs --out-dir dist",
     "vercel-build": "npx prisma generate && npx prisma migrate deploy"
   },
   "type": "module",
@@ -17,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.17.0",
+    "@vercel/node": "^3.2.8",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "pg": "^8.12.0",
